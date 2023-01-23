@@ -26,9 +26,10 @@ struct Location : Codable {
         region = try values.decodeIfPresent(String.self, forKey: .region)
         country = try values.decodeIfPresent(String.self, forKey: .country)
         localtime = try values.decodeIfPresent(String.self, forKey: .localtime)
-        if let dateTime = localtime
+        if let dateTime = localtime,
+           let newDate = dateTime.toDate(format: "yyyy-MM-dd HH:mm")?.toString(format: "dd MMM, yyyy")
         {
-            localtime = dateTime.toDate(format: "yyyy-MM-dd HH:mm")?.toString(format: "dd MMM, yyyy")
+            localtime = newDate
         }
     }
 }
