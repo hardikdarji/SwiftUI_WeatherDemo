@@ -8,22 +8,22 @@
 import SwiftUI
 
 @main
-struct WeatherTestApp: App {
+struct WeatherView: App {
     var body: some Scene {
         WindowGroup {
-            WeatherView()
+            WeatherSwiftUIView()
         }
     }
 }
-
-struct WeatherView: View {
+struct WeatherSwiftUIView: View {
     var body: some View {
-        Text("")
+        Text("Hello!")
     }
 }
 
-struct WeatherView_Previews: PreviewProvider {
+
+struct WeatherSwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherView()
+        WeatherSwiftUIView()
     }
 }
