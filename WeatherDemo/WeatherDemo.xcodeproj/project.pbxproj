@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1898D738297E61A600CB1346 /* WeatherDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D737297E61A600CB1346 /* WeatherDemoApp.swift */; };
-		1898D73A297E61A600CB1346 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D739297E61A600CB1346 /* ContentView.swift */; };
 		1898D73C297E61A800CB1346 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1898D73B297E61A800CB1346 /* Assets.xcassets */; };
 		1898D73F297E61A800CB1346 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1898D73E297E61A800CB1346 /* Preview Assets.xcassets */; };
 		1898D749297E61A900CB1346 /* WeatherDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D748297E61A900CB1346 /* WeatherDemoTests.swift */; };
 		1898D753297E61A900CB1346 /* WeatherDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D752297E61A900CB1346 /* WeatherDemoUITests.swift */; };
 		1898D755297E61A900CB1346 /* WeatherDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D754297E61A900CB1346 /* WeatherDemoUITestsLaunchTests.swift */; };
+		1898D766297E647600CB1346 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D765297E647600CB1346 /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +34,6 @@
 
 /* Begin PBXFileReference section */
 		1898D734297E61A600CB1346 /* WeatherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1898D737297E61A600CB1346 /* WeatherDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDemoApp.swift; sourceTree = "<group>"; };
-		1898D739297E61A600CB1346 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1898D73B297E61A800CB1346 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1898D73E297E61A800CB1346 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1898D744297E61A900CB1346 /* WeatherDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +41,9 @@
 		1898D74E297E61A900CB1346 /* WeatherDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1898D752297E61A900CB1346 /* WeatherDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDemoUITests.swift; sourceTree = "<group>"; };
 		1898D754297E61A900CB1346 /* WeatherDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1898D763297E641C00CB1346 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		1898D764297E641C00CB1346 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		1898D765297E647600CB1346 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +94,9 @@
 		1898D736297E61A600CB1346 /* WeatherDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1898D737297E61A600CB1346 /* WeatherDemoApp.swift */,
-				1898D739297E61A600CB1346 /* ContentView.swift */,
 				1898D73B297E61A800CB1346 /* Assets.xcassets */,
+				1898D762297E641C00CB1346 /* Helper */,
+				1898D761297E63EE00CB1346 /* View */,
 				1898D73D297E61A800CB1346 /* Preview Content */,
 			);
 			path = WeatherDemo;
@@ -125,6 +125,23 @@
 				1898D754297E61A900CB1346 /* WeatherDemoUITestsLaunchTests.swift */,
 			);
 			path = WeatherDemoUITests;
+			sourceTree = "<group>";
+		};
+		1898D761297E63EE00CB1346 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1898D765297E647600CB1346 /* WeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1898D762297E641C00CB1346 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1898D763297E641C00CB1346 /* APIManager.swift */,
+				1898D764297E641C00CB1346 /* Helper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +212,7 @@
 				TargetAttributes = {
 					1898D733297E61A600CB1346 = {
 						CreatedOnToolsVersion = 13.3;
+						LastSwiftMigration = 1330;
 					};
 					1898D743297E61A900CB1346 = {
 						CreatedOnToolsVersion = 13.3;
@@ -257,8 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1898D73A297E61A600CB1346 /* ContentView.swift in Sources */,
-				1898D738297E61A600CB1346 /* WeatherDemoApp.swift in Sources */,
+				1898D766297E647600CB1346 /* WeatherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherDemo/Preview Content\"";
@@ -433,6 +451,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.WeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -443,6 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherDemo/Preview Content\"";
