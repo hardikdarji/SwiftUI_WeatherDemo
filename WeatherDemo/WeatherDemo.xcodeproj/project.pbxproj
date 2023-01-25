@@ -27,6 +27,7 @@
 		1898D785297F173D00CB1346 /* WeatherSection1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D784297F173D00CB1346 /* WeatherSection1View.swift */; };
 		1898D787297F177A00CB1346 /* WeatherSection2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D786297F177A00CB1346 /* WeatherSection2View.swift */; };
 		1898D789297F183400CB1346 /* WeatherView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898D788297F183400CB1346 /* WeatherView+Ext.swift */; };
+		18AC6C1A2981037700D32B53 /* DayInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC6C192981037700D32B53 /* DayInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		1898D784297F173D00CB1346 /* WeatherSection1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSection1View.swift; sourceTree = "<group>"; };
 		1898D786297F177A00CB1346 /* WeatherSection2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSection2View.swift; sourceTree = "<group>"; };
 		1898D788297F183400CB1346 /* WeatherView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherView+Ext.swift"; sourceTree = "<group>"; };
+		18AC6C192981037700D32B53 /* DayInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				1898D788297F183400CB1346 /* WeatherView+Ext.swift */,
 				1898D784297F173D00CB1346 /* WeatherSection1View.swift */,
 				1898D786297F177A00CB1346 /* WeatherSection2View.swift */,
+				18AC6C192981037700D32B53 /* DayInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				1898D77A297E669400CB1346 /* APIManager.swift in Sources */,
 				1898D787297F177A00CB1346 /* WeatherSection2View.swift in Sources */,
 				1898D774297E668E00CB1346 /* WeatherModel.swift in Sources */,
+				18AC6C1A2981037700D32B53 /* DayInfoView.swift in Sources */,
 				1898D778297E668E00CB1346 /* Current.swift in Sources */,
 				1898D783297EFF4200CB1346 /* DataController.swift in Sources */,
 				1898D779297E668E00CB1346 /* Location.swift in Sources */,

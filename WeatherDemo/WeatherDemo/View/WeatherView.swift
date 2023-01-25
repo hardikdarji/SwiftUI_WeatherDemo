@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+
 struct WeatherSwiftUIView: View {
     //VIEWMODEL OBJECT
     @ObservedObject var objWeatherVM = WeatherViewModel()
@@ -22,26 +23,44 @@ struct WeatherSwiftUIView: View {
     var weatherData:FetchedResults<Weather>
     @Environment(\.managedObjectContext) var viewContext
 
+    @State var arrDays: [Forecastday]?
+    var dayBinding: Binding<[Forecastday]> {
+            Binding<[Forecastday]>(
+                get: {
+                    return self.arrDays ?? []
+            },
+                set: { newVal in
+                    self.arrDays = newVal
+            })
+        }
     var body: some View {
-        ScrollView{
-            VStack{
-                if self.isProgressViewShow{
-                    ProgressView {
-                        Text("Loading...")
+        NavigationView{
+            List{
+                VStack{
+                    if self.isProgressViewShow{
+                        ProgressView {
+                            Text("Loading...")
+                        }
+                    }
+                    Section1View(objWeatherModel: $objWeatherVM.objWeatherData,
+                                 arrCities: $cities)
+                        .padding(32)
+                    //section2View(objWeatherModel: $objWeatherVM.objWeatherData?.forecast?.forecastday ?? [])
+                   // section2View(arrModel: dayBinding)
+                    Section2View(arrModel: $arrDays ?? [])
+                    //section2View(arrModel: $objWeatherVM.objWeatherData?.forecast?.forecastday ?? [])
+                    Spacer()
                     }
                 }
-                section1View(objWeatherModel: $objWeatherVM.objWeatherData,
-                             arrCities: $cities)
-                    .padding(32)
-                section2View(objWeatherModel: $objWeatherVM.objWeatherData)
-                
-                Spacer()
             }
-            .onAppear {
-                setupData()
-            }
+        .refreshable {
+            setupData(isRefresh: true)
+        }
+        .onAppear {
+            setupData()
         }
     }
+    
 }
 
 struct WeatherSwiftUIView_Previews: PreviewProvider {

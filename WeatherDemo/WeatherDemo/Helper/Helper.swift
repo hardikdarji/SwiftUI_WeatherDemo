@@ -49,6 +49,15 @@ extension Date {
     }
 }
 
+// SwiftUI Optional Binding
+func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
+    Binding(
+        get: { lhs.wrappedValue ?? rhs },
+        set: { lhs.wrappedValue = $0 }
+    )
+}
+
+// TO LOAD IMAGE FROM URL
 struct NetworkImage: View {
     @StateObject private var viewModel = ViewModel()
 
@@ -106,19 +115,9 @@ extension NetworkImage {
         }
     }
 }
-extension Encodable {
 
-    /// Converting object to postable dictionary
-    func toDictionary(_ encoder: JSONEncoder = JSONEncoder()) throws -> [String: Any] {
-        let data = try encoder.encode(self)
-        let object = try JSONSerialization.jsonObject(with: data)
-        guard let json = object as? [String: Any] else {
-            let context = DecodingError.Context(codingPath: [], debugDescription: "Deserialized object is not a dictionary")
-            throw DecodingError.typeMismatch(type(of: object), context)
-        }
-        return json
-    }
-    /// Converting object to postable JSON
+extension Encodable {
+    // Converting object to postable JSON
     func toJSON(_ encoder: JSONEncoder = JSONEncoder()) throws -> NSString {
         let data = try encoder.encode(self)
         let result = String(decoding: data, as: UTF8.self)

@@ -34,7 +34,6 @@ extension WeatherSwiftUIView
                 let jsonData = JSON.data(using: .utf8)!
                 let objWeatherModel: WeatherModel = try! JSONDecoder().decode(WeatherModel.self, from: jsonData)
                 self.objWeatherVM.objWeatherData = objWeatherModel
-                self.isProgressViewShow = false
             }
             else
             {
@@ -44,10 +43,12 @@ extension WeatherSwiftUIView
                 if let city = cities?.first
                 {
                     await self.objWeatherVM.getWeatherData(manager: APIManager(), apiKey: apiKey, city: city)
-                    self.isProgressViewShow = false
                     self.addData()
                 }
             }
+            self.isProgressViewShow = false
+            
+            arrDays = self.objWeatherVM.objWeatherData?.forecast?.forecastday
         }
     }
     //SAVE DATA TO Weather

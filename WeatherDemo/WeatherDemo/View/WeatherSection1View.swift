@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct section1View: View{
+struct Section1View: View{
     @Binding var objWeatherModel:WeatherModel?
     @Binding var arrCities:[String]?
     @State var selectedIndex = 0
