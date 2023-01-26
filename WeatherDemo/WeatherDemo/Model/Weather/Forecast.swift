@@ -1,7 +1,7 @@
 
 import Foundation
 struct Forecast : Codable {
-	let forecastday : [Forecastday]?
+    var forecastday : [Forecastday]?
 
 	enum CodingKeys: String, CodingKey {
 

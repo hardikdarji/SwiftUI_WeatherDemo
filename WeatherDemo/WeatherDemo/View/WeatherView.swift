@@ -22,17 +22,9 @@ struct WeatherSwiftUIView: View {
     @FetchRequest(entity: Weather.entity(), sortDescriptors: [])
     var weatherData:FetchedResults<Weather>
     @Environment(\.managedObjectContext) var viewContext
-
+    
     @State var arrDays: [Forecastday]?
-    var dayBinding: Binding<[Forecastday]> {
-            Binding<[Forecastday]>(
-                get: {
-                    return self.arrDays ?? []
-            },
-                set: { newVal in
-                    self.arrDays = newVal
-            })
-        }
+    
     var body: some View {
         NavigationView{
             List{
@@ -44,15 +36,12 @@ struct WeatherSwiftUIView: View {
                     }
                     Section1View(objWeatherModel: $objWeatherVM.objWeatherData,
                                  arrCities: $cities)
-                        .padding(32)
-                    //section2View(objWeatherModel: $objWeatherVM.objWeatherData?.forecast?.forecastday ?? [])
-                   // section2View(arrModel: dayBinding)
-                    Section2View(arrModel: $arrDays ?? [])
-                    //section2View(arrModel: $objWeatherVM.objWeatherData?.forecast?.forecastday ?? [])
+                    .padding(32)
+                    Section2Container(arrModel: $arrDays ?? [], selectedDate: "")
                     Spacer()
-                    }
                 }
             }
+        }
         .refreshable {
             setupData(isRefresh: true)
         }

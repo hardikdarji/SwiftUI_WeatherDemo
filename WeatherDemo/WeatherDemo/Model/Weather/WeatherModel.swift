@@ -2,7 +2,7 @@ import Foundation
 struct WeatherModel : Codable {
     let location : Location?
     let current : Current?
-    let forecast : Forecast?
+    var forecast : Forecast?
 
     enum CodingKeys: String, CodingKey {
 

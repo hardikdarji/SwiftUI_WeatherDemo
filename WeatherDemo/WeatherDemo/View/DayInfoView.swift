@@ -8,7 +8,7 @@
 import SwiftUI
 struct DayInfoView: View{
     var objModelData:Forecastday?
-//    @Binding var isDetailView: Bool
+    @Binding var selectedDate: String
     var body: some View {
         VStack{
             if let objModel = objModelData
@@ -50,10 +50,48 @@ struct DayInfoView: View{
         }
         .gesture(
             TapGesture()
-                .onEnded({ val in
-//                    self.isDetailView = !self.isDetailView
-                    print("touched: \(val)")
+                .onEnded({ _ in
+                    if let val = objModelData?.date
+                    {self.selectedDate = val }
                 })
         )
+    }
+}
+struct HourInfoView: View{
+    var objModelData:Hour?
+    var body: some View {
+        VStack{
+            if let objModel = objModelData
+            {
+                if let val = objModel.time
+                {
+                    Text(val)
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .foregroundColor(.primary)
+                }
+                if let icon = objModel.condition?.icon,
+                   let url = URL(string: "https:\(icon)")
+                {
+                    if #available(iOS 15.0, *) {
+                        AsyncImage(url: url) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 50, height: 50)
+                    } else {
+                        // Fallback on earlier versions
+                        NetworkImage(url: url)
+                            .frame(width: 50, height: 50)
+                    }
+                }
+                if let temp = objModel.temp_c
+                {
+                    Text("\(String(Int(temp)))°")
+                        .font(.system(size: 24, weight: .regular))
+                        .foregroundColor(.gray)
+                }
+            }
+        }
     }
 }

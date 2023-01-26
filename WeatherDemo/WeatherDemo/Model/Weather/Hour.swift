@@ -1,7 +1,9 @@
 import Foundation
-struct Hour : Codable {
+struct Hour : Codable, Identifiable {
+    var id: UUID = UUID()
+
 	let time_epoch : Int?
-	let time : String?
+	var time : String?
 	let temp_c : Double?
 	let temp_f : Double?
 	let is_day : Int?
@@ -75,6 +77,11 @@ struct Hour : Codable {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		time_epoch = try values.decodeIfPresent(Int.self, forKey: .time_epoch)
 		time = try values.decodeIfPresent(String.self, forKey: .time)
+        if let strDate = time,
+           let newDate = strDate.toDate(format: "yyyy-MM-dd HH:mm")?.toString(format: "h a")
+        {
+            time = newDate
+        }
 		temp_c = try values.decodeIfPresent(Double.self, forKey: .temp_c)
 		temp_f = try values.decodeIfPresent(Double.self, forKey: .temp_f)
 		is_day = try values.decodeIfPresent(Int.self, forKey: .is_day)

@@ -19,8 +19,24 @@ class WeatherViewModel: ObservableObject{
             print(error)
         case .success(let object):
             DispatchQueue.main.async {
-                self.objWeatherData = object
+                self.objWeatherData = self.nowManipulation(model: object)
             }
         }
+    }
+    private func nowManipulation(model: WeatherModel) -> WeatherModel
+    {
+        var modifiedModel = model
+        if let hours = model.forecast?.forecastday?.first?.hour
+        {
+            let data = hours.filter { hr in
+                if let strHr = hr.time?.toDate(format: "h a")?.toString(format: "H")
+                {
+                    return (Int(strHr) ?? 0) >= (Int(Date().toString(format: "H")) ?? 0)
+                }
+                return false
+            }
+            modifiedModel.forecast?.forecastday?[0].hour = data
+        }
+        return modifiedModel
     }
 }
