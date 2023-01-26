@@ -3,4 +3,4 @@ In this demo App I have implemented weather api data to shown in 1 screen with b
 I used SwiftUI + MVVM
 
 Here is demo:
-[![Demo CountPages alpha](https://drive.google.com/file/d/1vEWLdlwJ8nYw4WUYl4KPs6AF-mFft6df/view?usp=share_link)]
+[![Demo Video](https://github.com/hardikdarji/WeatherDemo/blob/main/WeatherDemo/SwiftUI_WeatherDemo.gif)](https://youtube.com/shorts/kCxzO3JPRPU)
