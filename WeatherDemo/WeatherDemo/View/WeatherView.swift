@@ -58,13 +58,13 @@ struct WeatherSwiftUIView_Previews: PreviewProvider {
     }
 }
 
-@main
-struct WeatherView: App {
-    @StateObject private var dataController = DataController()
-    var body: some Scene {
-        WindowGroup {
-            WeatherSwiftUIView()
-                .environment(\.managedObjectContext, dataController.container.viewContext)
-        }
-    }
-}
+//@main
+//struct WeatherView: App {
+//    @StateObject private var dataController = DataController()
+//    var body: some Scene {
+//        WindowGroup {
+//            WeatherSwiftUIView()
+//                .environment(\.managedObjectContext, dataController.container.viewContext)
+//        }
+//    }
+//}

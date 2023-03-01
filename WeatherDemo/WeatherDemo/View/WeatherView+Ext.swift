@@ -38,7 +38,7 @@ extension WeatherSwiftUIView
             else
             {
                 //API CALL
-                cities = ["Ahmedabad", "Surat"]
+                cities = ["Ooty", "Surat"]
                 let apiKey = "522db6a157a748e2996212343221502"
                 if let city = cities?.first
                 {
