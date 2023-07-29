@@ -7,7 +7,7 @@
 
 import CoreData
 //TO MANAGE HELPER METHODS
-extension WeatherSwiftUIView
+extension WeatherInfoView
 {
     //ADD DATA, FETCHED FORM API CALL
     func addData()
@@ -29,7 +29,8 @@ extension WeatherSwiftUIView
     {
         Task{
             //CHECK IN STORED DATA, IF EXIST THEN SHOW FROM STORED DATA..
-            if let JSON = weatherData.first?.data, !isRefresh
+            if let JSON = weatherData.first?.data,
+                !isRefresh, false // stop read from local db temp
             {
                 let jsonData = JSON.data(using: .utf8)!
                 let objWeatherModel: WeatherModel = try! JSONDecoder().decode(WeatherModel.self, from: jsonData)
@@ -38,13 +39,9 @@ extension WeatherSwiftUIView
             else
             {
                 //API CALL
-                cities = ["Ooty", "Surat"]
                 let apiKey = "522db6a157a748e2996212343221502"
-                if let city = cities?.first
-                {
-                    await self.objWeatherVM.getWeatherData(manager: APIManager(), apiKey: apiKey, city: city)
-                    self.addData()
-                }
+                await self.objWeatherVM.getWeatherData(manager: APIManager(), apiKey: apiKey, city: objCity.name)
+                self.addData()
             }
             self.isProgressViewShow = false
             

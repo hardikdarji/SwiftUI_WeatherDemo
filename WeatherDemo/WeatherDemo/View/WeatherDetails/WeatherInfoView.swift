@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct WeatherSwiftUIView: View {
+struct WeatherInfoView: View {
     //VIEWMODEL OBJECT
     @ObservedObject var objWeatherVM = WeatherViewModel()
     
@@ -16,7 +16,7 @@ struct WeatherSwiftUIView: View {
     @State var isProgressViewShow: Bool = true
     
     //LIST OF CITIES TO BE SELECTED AND GET DATA
-    @State var cities:[String]?
+    @Binding var objCity: City
     
     //TO FETCH DATA FROM CORE DATA STORAGE...
     @FetchRequest(entity: Weather.entity(), sortDescriptors: [])
@@ -34,8 +34,7 @@ struct WeatherSwiftUIView: View {
                             Text("Loading...")
                         }
                     }
-                    Section1View(objWeatherModel: $objWeatherVM.objWeatherData,
-                                 arrCities: $cities)
+                    Section1View(objWeatherModel: $objWeatherVM.objWeatherData)
                     .padding(32)
                     Section2Container(arrModel: $arrDays ?? [], selectedDate: "")
                     Spacer()
@@ -52,19 +51,9 @@ struct WeatherSwiftUIView: View {
     
 }
 
-struct WeatherSwiftUIView_Previews: PreviewProvider {
+struct WeatherInfoView_Previews: PreviewProvider {
+    @State static var city = City(name: "Surat")
     static var previews: some View {
-        WeatherSwiftUIView()
+        WeatherInfoView(objCity: $city)
     }
 }
-
-//@main
-//struct WeatherView: App {
-//    @StateObject private var dataController = DataController()
-//    var body: some Scene {
-//        WindowGroup {
-//            WeatherSwiftUIView()
-//                .environment(\.managedObjectContext, dataController.container.viewContext)
-//        }
-//    }
-//}

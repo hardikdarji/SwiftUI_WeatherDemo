@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct AddCityView: View {
-    @Binding var cities: [String]
+    @Binding var cities: [City]
     @Binding var isShowingSheet: Bool
-    @State var cityName: String = ""
+    @State var objCity = City()
     @State var isShowError: Bool = false
-    
 
     var body: some View {
         NavigationView{
@@ -23,12 +22,12 @@ struct AddCityView: View {
                 HStack{
                     Spacer(minLength: 12)
                     VStack{
-                        TextField("City Name", text: $cityName)
+                        TextField("City Name", text: $objCity.name)
                             .textFieldStyle(.roundedBorder)
                             .onSubmit {
                                 isShowError = false
                             }
-                            .onChange(of: cityName) { newValue in
+                            .onChange(of: objCity.name) { newValue in
                                 if newValue.count > 0
                                 {
                                     isShowError = false
@@ -39,7 +38,7 @@ struct AddCityView: View {
                     Button {
                         validateCity()
                         if !isShowError {
-                            cities.append(cityName)
+                            cities.append(City(name: objCity.name))
                             isShowingSheet = false
                         }
                     } label: {
@@ -66,7 +65,7 @@ struct AddCityView: View {
     }
         func validateCity()
         {
-            if cityName.trimmingCharacters(in: .whitespaces).count == 0
+            if objCity.name.trimmingCharacters(in: .whitespaces).count == 0
             {
                 isShowError = true
             }
@@ -77,11 +76,12 @@ struct AddCityView: View {
         }
     
 }
-struct AddCityView_Previews: PreviewProvider {
-    @State static var cities = ["Ahmedabad", "Surat"]
-    @State static private var isShowingSheet = true
-
-    static var previews: some View {
-        AddCityView(cities: $cities, isShowingSheet: $isShowingSheet)
-    }
-}
+//
+//struct AddCityView_Previews: PreviewProvider {
+//    @State static var cities = [City(name: "Ahmedabad")]
+//    @State static private var isShowingSheet = true
+//
+//    static var previews: some View {
+//        AddCityView(cities: $cities, isShowingSheet: $isShowingSheet)
+//    }
+//}
